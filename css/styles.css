@@ -6,6 +6,7 @@ td {
     padding: 6px;
     border-bottom-color: gray;
     border-bottom-width: 1px;
+    border-style: solid;
 }
 
 th {
@@ -14,6 +15,7 @@ th {
     padding: 12px 0px 12px 6px;
     border-bottom-color: gray;
     border-bottom-width: 2px;
+    border-style: solid;
 }
 
 table {
