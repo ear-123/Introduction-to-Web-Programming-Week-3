@@ -17,24 +17,38 @@ async function code(){
     console.log(dataJSON2);
 
 
-    const municipality = dataJSON.dataset.dimension.Alue.category.label
+    const states = dataJSON.dataset.dimension.Alue.category.label
     
     let i = 0 
-    Object.values(municipality).forEach((data) => {
+    Object.values(states).forEach((stateName) => {
         let tr = document.createElement("tr")
         let td1 = document.createElement("td")
         let td2 = document.createElement("td")
         let td3 = document.createElement("td")
-        
-        td1.innerText = data
-        td2.innerText = dataJSON.dataset.value[i]
-        td3.innerText = dataJSON2.dataset.value[i]
+        let td4 = document.createElement("td")
 
+        let population = dataJSON.dataset.value[i]
+        let employment = dataJSON2.dataset.value[i]
+        let employmentPercentage = employment/population * 100
+        
+        td1.innerText = stateName
+        td2.innerText = population
+        td3.innerText = employment
+        td4.innerText = employmentPercentage.toFixed(2) + "%"
+        
         tr.appendChild(td1)
         tr.appendChild(td2)
         tr.appendChild(td3)
+        tr.appendChild(td4)
+
         if (i%2==0) {
             tr.className = "other"
+        }
+        if (employmentPercentage > 45) {
+            tr.className = "high"
+        }
+        if (employmentPercentage < 25) {
+            tr.className = "low"
         }
 
         tbody.appendChild(tr)
