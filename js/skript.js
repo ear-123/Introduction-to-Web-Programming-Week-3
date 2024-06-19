@@ -24,6 +24,10 @@ async function code(){
 
         tr.appendChild(td1)
         tr.appendChild(td2)
+        if (i%2==0) {
+            tr.className = "other"
+        }
+
         tbody.appendChild(tr)
         i++
     });
